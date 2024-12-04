@@ -1,1 +1,31 @@
-<p>bookings works!</p>
+<div class="contanier">
+  <h3 class="mt-4 mb-4">Foglalások </h3>
+  <hr>
+  <table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Datum</th>
+        <th>Szállás neve/ Cime</th>
+        <th>foglalás kezdete/vége</th>
+        <th>személyek száma</th>
+        <th>végösszeg</th>
+        <th class="text-end">Müveletek</th>
+    </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let booking of bookings;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{booking.bookingDate}}</td>
+            <td>{{booking.accomName}} <br> {{booking.accomAdd}}</td>
+            <td>{{booking.startDate}} <br> {{booking.endDate}} </td>
+            <td class="text-end">{{booking.personCount}}</td>
+            <td class="text-end" > {{booking.checkout}}</td>
+            <td><button class="btn btn-danger">Lemondás</button></td>
+        </tr>
+    </tbody>
+    
+  </table>
+
+</div>

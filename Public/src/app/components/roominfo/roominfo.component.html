@@ -19,17 +19,21 @@
         </ul>
         <div class="card-body">
           <h6>Szállásfoglalás:</h6>
-          <div class="row">
-            <div class="form-floating mb-3 col-6">
-              <input type="date" class="form-control" id="start" placeholder="">
-              <label for="start" class="ms-2">Foglalás kezete:</label>
+          <div *ngIf=""isloggedIn>
+            <div class="row">
+              <div class="form-floating mb-3 col-6">
+                <input type="date" class="form-control" id="start" placeholder="">
+                <label for="start" class="ms-2">Foglalás kezete:</label>
+              </div>
+  
+              <div class="form-floating mb-3 col-6">
+                <input type="date" class="form-control" id="end" placeholder="">
+                <label for="end" class="ms-2">Foglalás vége:</label>
+              </div>
             </div>
-
-            <div class="form-floating mb-3 col-6">
-              <input type="date" class="form-control" id="end" placeholder="">
-              <label for="end" class="ms-2">Foglalás vége:</label>
-            </div>
+            <button class="btn"></button>
           </div>
+          
           <div class="row">
             <div class="form-floating mb-3 col-6">
               <input type="number" class="form-control" id="fo" placeholder="">
