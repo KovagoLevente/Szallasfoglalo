@@ -28,6 +28,7 @@ export class AuthService {
     localStorage.removeItem(environment.tokenName);
     this.isLoggedIn.next(false);
   }
+
   loggedUser(){
     const token = localStorage.getItem(this.tokenName);
     if (token){

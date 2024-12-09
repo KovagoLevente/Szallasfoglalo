@@ -20,14 +20,13 @@ import { CommonModule } from '@angular/common';
 export class RoominfoComponent implements OnInit{
   constructor(
     private api: ApiService,
-    private activatedRoute: ActivatedRoute,
-    private auth: AuthService
-      
-    
+    private auth: AuthService,
+    private activatedRoute: ActivatedRoute
   ){}
 
   roomID: string = "";
   isLoggedIn:boolean = false;
+
   room:Room =  {
       id: 'dsdsfasdfsaf',
       title: "Duna Szálló",
@@ -52,9 +51,10 @@ export class RoominfoComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.auth.isLoggedIn$.subscribe(res=>{
+    this.auth.isLoggedIn$.subscribe(res => {
       this.isLoggedIn = res;
-    })
+    });
+
     this.roomID = this.activatedRoute.snapshot.params['id'];
 
     this.api.read('accomodations', this.roomID).subscribe(res =>{
