@@ -9,6 +9,8 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { ManageBookingsComponent } from './components/manage-bookings/manage-bookings.component';
 import { ManageRoomsComponent } from './components/manage-rooms/manage-rooms.component';
+import { UserAuthGuard } from './guards/user-auth.guard';
+import { AdminAuthGuard } from './guards/admin-auth.guard';
 
 export const routes: Routes = [
   {
@@ -36,13 +38,15 @@ export const routes: Routes = [
   {
     path: 'logout', component: LogoutComponent
   },
+
+
   {
-    path: 'bookings', component: BookingsComponent
+    path: 'bookings', component: BookingsComponent,canActivate: [UserAuthGuard]
   },
 
   
   {
-    path: 'admin',
+    path: 'admin', canActivate:[AdminAuthGuard],
     children: [
       {
         path: 'rooms', component: ManageRoomsComponent
