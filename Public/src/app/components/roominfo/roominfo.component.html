@@ -25,7 +25,7 @@
                 <input type="date" class="form-control" id="start" placeholder="">
                 <label for="start" class="ms-2">Foglalás kezete:</label>
               </div>
-  
+
               <div class="form-floating mb-3 col-6">
                 <input type="date" class="form-control" id="end" placeholder="">
                 <label for="end" class="ms-2">Foglalás vége:</label>
@@ -40,13 +40,12 @@
                 <input type="text" class="form-control" id="fo" placeholder="" disabled>
                 <label for="fo" class="ms-2">Végösszeg:</label>
               </div>
-              <a routerLink="/rooms/{{room.id}}" class="btn btn-primary">Foglalok</a>
             </div>
+            <button class="btn btn-primary">Foglalok</button>
           </div>
           <div *ngIf="!isLoggedIn">
-            A szálláshoz regisztrálj és jelentkezz be!
+            A szálásfoglaláshoz regisztrálj és jelentkezz be!
           </div>
-          
         </div>
       </div>
     </div>

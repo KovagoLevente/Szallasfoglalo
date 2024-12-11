@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -42,13 +42,13 @@ export class AuthService {
     return null;
   }
 
-
-  isLoggedUser():boolean {
+  isLoggedUser():boolean{
     return this.isLoggedIn.value;
   }
 
   isAdmin():boolean{
-    const user =this.loggedUser();
-    return user.role ==='admin' ;
+    const user = this.loggedUser();
+    return user.role === 'admin';
   }
+
 }

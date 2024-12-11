@@ -7,17 +7,18 @@ import { RoominfoComponent } from './components/roominfo/roominfo.component';
 import { LostpassComponent } from './components/lostpass/lostpass.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { BookingsComponent } from './components/bookings/bookings.component';
-import { ManageBookingsComponent } from './components/manage-bookings/manage-bookings.component';
 import { ManageRoomsComponent } from './components/manage-rooms/manage-rooms.component';
+import { ManageBookingsComponent } from './components/manage-bookings/manage-bookings.component';
 import { UserAuthGuard } from './guards/user-auth.guard';
 import { AdminAuthGuard } from './guards/admin-auth.guard';
 
 export const routes: Routes = [
+
+  /**
+   *  logged out routes
+   */
   {
     path: 'login', component: LoginComponent
-  },
-  {
-    path: 'logout', component: LogoutComponent
   },
   {
     path: 'registration', component: RegistrationComponent
@@ -32,33 +33,41 @@ export const routes: Routes = [
     path: 'rooms/:id', component: RoominfoComponent
   },
 
-
-
-
+  /**
+   * logged in routes
+   */
   {
-    path: 'logout', component: LogoutComponent
+    path: 'logout', component: LogoutComponent, canActivate: [UserAuthGuard]
   },
 
-
+  /**
+   * user routes
+   */
   {
-    path: 'bookings', component: BookingsComponent,canActivate: [UserAuthGuard]
+    path: 'bookings', component: BookingsComponent, canActivate: [UserAuthGuard]
   },
 
-  
+  /**
+   * admin routes
+   */
   {
-    path: 'admin', canActivate:[AdminAuthGuard],
+    path: 'admin', canActivate: [AdminAuthGuard],
     children: [
       {
         path: 'rooms', component: ManageRoomsComponent
       },
       {
         path: 'bookings', component: ManageBookingsComponent
+      },
+      {
+        path: 'users', component: ManageBookingsComponent
       }
     ]
   },
 
-
-
+  /**
+   * Other routes
+   */
 
   {
     path: '', redirectTo: 'rooms', pathMatch: 'full'
